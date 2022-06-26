@@ -9,6 +9,7 @@ const Category = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
+
   return (
     <div>
       <Container component="main" maxWidth="xs">

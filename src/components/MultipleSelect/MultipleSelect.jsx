@@ -18,6 +18,7 @@ const MultipleSelect = ({ options, width, setCategoryList }) => {
   const isAllSelected =
     options?.length > 0 && selected.length === options.length;
 
+  // store the category list if the user select multiple category
   const handleChange = (event) => {
     const value = event.target.value;
     if (value[value.length - 1] === "all") {

@@ -1,13 +1,10 @@
-import { Box } from "@mui/system";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import AdBanner from "./components/AdBanner/AdBanner";
 import AllCategories from "./components/AllCategories/AllCategories";
 import AllProducts from "./components/AllProducts/AllProducts";
 import AllUsers from "./components/AllUsers/AllUsers";
 import LogIn from "./components/Auth/LogIn/LogIn";
 import Register from "./components/Auth/Register/register";
-import Banner from "./components/Banner/Banner";
 import Category from "./components/Category/Category";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
@@ -31,7 +28,6 @@ function App() {
         <Route path="/categories" element={<AllCategories />} />
       </Routes>
       <Footer />
-
     </div>
   );
 }

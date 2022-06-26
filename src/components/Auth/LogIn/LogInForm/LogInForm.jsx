@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
 
 const LogInForm = () => {
           const {
@@ -21,7 +20,6 @@ const LogInForm = () => {
       <Box
         sx={{
           py: 2,
-        //   px: "40px",
           width: "90%",
           display: "flex",
           flexDirection: "column",

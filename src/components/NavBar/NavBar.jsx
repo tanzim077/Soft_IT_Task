@@ -113,7 +113,7 @@ const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {pages.map((page) => (
-                <MenuItem onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography
                     onClick={() => handleRedirect(page)}
                     textAlign="center"

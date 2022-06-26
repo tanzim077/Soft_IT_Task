@@ -38,6 +38,7 @@ const allCategory = categoryRows.map((row) => {
   return row.categoryid;
 });
 
+// Some dummy data for the table
 const rows = [
   createData("1", [45], "Dummy Product", "Short descripton"),
   createData("2", [38], "Dummy Product", "Short descripton"),
@@ -84,7 +85,6 @@ const AllProducts = () => {
 
   // change the search type here
   const handleChange = (e) => {
-    console.log(e.target.value);
     setSearchType(e.target.value);
   };
 
@@ -113,8 +113,6 @@ const AllProducts = () => {
       : setData(rows);
   }, [searchValue]);
 
-  console.log(categoryList);
-
   return (
     <Box sx={{ p: 3 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -140,12 +138,11 @@ const AllProducts = () => {
             {...register("id")}
           />
 
-          {/* <Grid xs={12}> */}
           <MultipleSelect
             options={allCategory}
             setCategoryList={setCategoryList}
           />
-          {/* </Grid> */}
+      
           <TextField
             name="name"
             required

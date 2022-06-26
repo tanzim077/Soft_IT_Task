@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <Banner />
-      {/* <Box sx={{ display: "flex", justifyContent: "center", px: "4%" }}> */}
+    
       <Grid
         container
         sx={{ display: "flex", justifyContent: "center", px: "4%" }}

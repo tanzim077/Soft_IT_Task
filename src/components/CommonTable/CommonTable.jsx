@@ -20,22 +20,29 @@ const CommonTable = ({
   handleChangePage,
   handleChangeRowsPerPage,
 }) => {
+  
+  // Delete the data from the table
   const handleDelete = (id) => {
     setData((previousData) => {
       return previousData.filter((item) => item.id !== id);
     });
   };
+  
   const [open, setOpen] = useState(false);
   const [singleData, setSingleData] = useState({});
 
+
+  // used for openning the edit modal
   function handleOpen() {
     setOpen(true);
   }
 
+  // used for closing the modal
   function handleClose() {
     setOpen(false);
   }
 
+  // handle edit functionality
   function handleEdit(row) {
     setSingleData(row);
     handleOpen();
@@ -69,7 +76,6 @@ const CommonTable = ({
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {
                       const value = row[column.id];
-                      console.log(typeof(value))
                       return (
 
                         <TableCell key={column.id} align={column.align}>

@@ -23,188 +23,198 @@ const style = {
 };
 const Footer = () => {
   return (
-    <Grid container>
-      {/* <Grid items xs={12} sm={12} md={12} lg={12}> */}
-      <Grid
-        container
-        spacing={{ xs: 2, md: 0 }}
-        style={style}
-        sx={{ display: "flex", px: 3, justifyContent: "center", gap: 0 }}
-      >
+    <Grid container sx={{ pt: 4 }}>
+      <Grid items xs={12} sm={12} md={12} lg={12}>
         <Grid
-          items
-          xs={6}
-          md={3}
-          lg={3}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
+          container
+          spacing={{ xs: 2, md: 0 }}
+          style={style}
+          sx={{ display: "flex", p: 4, justifyContent: "center", gap: 0 }}
         >
-          <Box>
-            <ShoppingCartIcon />
-          </Box>
-          <Box>
-            <Typography variant="body1" color="white">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </Typography>
-          </Box>
-          <Box>
-            <Typography variant="body1" color="white">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </Typography>
-          </Box>
-        </Grid>
-
-        <Grid
-          items
-          xs={6}
-          md={3}
-          lg={3}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-          }}
-        >
-          <Box>
-            <Typography
-              sx={{ textAlign: "left" }}
-              variant="body1"
-              color="white"
-            >
-              Contact Us
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <Box sx={{ display: "flex" }}>
-              <AddLocationAltIcon />
-              <Typography variant="body1" color="white">
-                +09340-2934, 098324, 809320
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex" }}>
-              <LocalPhoneIcon />
-              <Typography variant="body1" color="white">
-                +09340-2934, 098324, 809320
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex" }}>
-              <EmailIcon />
-              <Typography variant="body1" color="white">
-                +09340-2934, 098324, 809320
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex" }}>
-              <LanguageIcon />
-              <Typography variant="body1" color="white">
-                +09340-2934, 098324, 809320
-              </Typography>
-            </Box>
-          </Box>
-        </Grid>
-
-        <Grid
-          items
-          xs={12}
-          md={2}
-          lg={2}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-            // alignItems: "center",
-          }}
-        >
-          <Box>
-            <Typography variant="body1" color="white">
-              My Account
-            </Typography>
-          </Box>
-          &nbsp;
-          <Box
+          <Grid
+            items
+            xs={6}
+            md={3}
+            lg={3}
             sx={{
               display: "flex",
               flexDirection: "column",
-              textAlign: "left",
-              gap: 2,
+              justifyContent: "space-around",
+              alignItems: "center",
             }}
           >
-            <Typography variant="body1" color="white">
-              My Account
-            </Typography>
-            <Typography variant="body1" color="white">
-              Wishlist
-            </Typography>
-            <Typography variant="body1" color="white">
-              Shopping Cart
-            </Typography>
-            <Typography variant="body1" color="white">
-              Compare
-            </Typography>
-            <Typography variant="body1" color="white">
-              Checkout
-            </Typography>
-          </Box>
-        </Grid>
-
-        <Grid
-          items
-          xs={8}
-          md={4}
-          lg={4}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-          }}
-        >
-          <Typography variant="body1" color="white" sx={{ textAlign: "left" }}>
-            Signup for NewsLetter
-          </Typography>
-          <Box sx={{ display: "flex" }}>
-            <Box
-              component="form"
-              sx={{
-                "& > :not(style)": { m: 1, width: "25ch" },
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <TextField
-                id="outlined-basic"
-                label="Email"
-                variant="outlined"
-                sx={{
-                  input: { color: "white" },
-                  label: { color: "white" },
-                  border: "1px solid white",
-                }}
-              />
+            <Box>
+              <ShoppingCartIcon />
             </Box>
-            <Button
-              sx={{ color: "white", backgroundColor: "red", my: 1 }}
-              variant="contained"
-              type="submit"
+            <Box>
+              <Typography variant="body1" color="white">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="body1" color="white">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </Typography>
+            </Box>
+          </Grid>
+
+          <Grid
+            items
+            xs={6}
+            md={3}
+            lg={3}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+            }}
+          >
+            <Box>
+              <Typography
+                sx={{ textAlign: "left" }}
+                variant="body1"
+                color="white"
+              >
+                Contact Us
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <Box sx={{ display: "flex", gap: 2 }}>
+                <AddLocationAltIcon />
+                <Typography variant="body1" color="white">
+                  12/3, Road no : 7, Sector : 1, Dhaka
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", gap: 2 }}>
+                <LocalPhoneIcon />
+                <Typography variant="body1" color="white">
+                  +09340-2934, 098324, 809320
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", gap: 2 }}>
+                <EmailIcon />
+                <Typography variant="body1" color="white">
+                  demo@admin.com
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", gap: 2 }}>
+                <LanguageIcon />
+                <Typography variant="body1" color="white">
+                  www.google.com www.facebook.com
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+
+          <Grid
+            items
+            xs={12}
+            md={2}
+            lg={2}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+              // alignItems: "center",
+            }}
+          >
+            <Box>
+              <Typography variant="body1" color="white">
+                My Account
+              </Typography>
+            </Box>
+            &nbsp;
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left",
+                gap: 2,
+              }}
             >
-              Submit
-            </Button>
-          </Box>
-          <Typography variant="body1" color="white" sx={{ textAlign: "left" }}>
-            Follow Us on
-          </Typography>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <FacebookIcon />
-            <TwitterIcon />
-            <PinterestIcon />
-            <LinkedInIcon />
-            <RedditIcon />
-          </Box>
+              <Typography variant="body1" color="white">
+                My Account
+              </Typography>
+              <Typography variant="body1" color="white">
+                Wishlist
+              </Typography>
+              <Typography variant="body1" color="white">
+                Shopping Cart
+              </Typography>
+              <Typography variant="body1" color="white">
+                Compare
+              </Typography>
+              <Typography variant="body1" color="white">
+                Checkout
+              </Typography>
+            </Box>
+          </Grid>
+
+          <Grid
+            items
+            xs={8}
+            md={4}
+            lg={4}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+            }}
+          >
+            <Typography
+              variant="body1"
+              color="white"
+              sx={{ textAlign: "left" }}
+            >
+              Signup for NewsLetter
+            </Typography>
+            <Box sx={{ display: "flex" }}>
+              <Box
+                component="form"
+                sx={{
+                  "& > :not(style)": { m: 1, width: "25ch" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField
+                  id="outlined-basic"
+                  label="Email"
+                  variant="outlined"
+                  sx={{
+                    input: { color: "white" },
+                    label: { color: "white" },
+                    border: "1px solid white",
+                  }}
+                />
+              </Box>
+              <Button
+                sx={{ color: "white", backgroundColor: "red", my: 1 }}
+                variant="contained"
+                type="submit"
+              >
+                Submit
+              </Button>
+            </Box>
+            <Typography
+              variant="body1"
+              color="white"
+              sx={{ textAlign: "left" }}
+            >
+              Follow Us on
+            </Typography>
+            <Box
+              sx={{ display: "flex", justifyContent: "space-around", px: 3 }}
+            >
+              <FacebookIcon />
+              <TwitterIcon />
+              <PinterestIcon />
+              <LinkedInIcon />
+              <RedditIcon />
+            </Box>
+          </Grid>
         </Grid>
       </Grid>
-      {/* </Grid> */}
 
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Box

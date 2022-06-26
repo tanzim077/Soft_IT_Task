@@ -137,19 +137,7 @@ const EditModal = ({ open, handleClose, setData, data }) => {
                   />
                 </>
                           )}
-                          {/* {
-                              data.category && (
-                                  
-                          } */}
-              {/* <TextField
-                name="categoryid"
-                fullWidth
-                id="categoryid"
-                label="Category ID"
-                defaultValue={data.categoryid}
-                {...register("categoryid")}
-              /> */}
-
+                       
               <Button
                 type="submit"
                 size="small"
