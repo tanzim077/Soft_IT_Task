@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box } from "@mui/system";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import AdBanner from "./components/AdBanner/AdBanner";
+import AllCategories from "./components/AllCategories/AllCategories";
+import AllProducts from "./components/AllProducts/AllProducts";
+import AllUsers from "./components/AllUsers/AllUsers";
+import LogIn from "./components/Auth/LogIn/LogIn";
+import Register from "./components/Auth/Register/register";
+import Banner from "./components/Banner/Banner";
+import Category from "./components/Category/Category";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import NavBar from "./components/NavBar/NavBar";
+import Product from "./components/Product/Product";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/login" element={<Auth />} /> */}
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/users" element={<AllUsers />} />
+        <Route path="/products" element={<AllProducts />} />
+        <Route path="/categories" element={<AllCategories />} />
+      </Routes>
+      <Footer />
+
     </div>
   );
 }
