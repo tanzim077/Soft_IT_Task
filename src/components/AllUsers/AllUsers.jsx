@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import {Box, Button, Grid, TextField} from "@mui/material";
 import { useForm } from "react-hook-form";
 
 import * as React from "react";
@@ -90,76 +90,88 @@ export default function AllUsers() {
   }, [searchValue]);
 
   return (
-    <Box sx={{ p: 3 }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Box
-          component="div"
-          noValidate
-          sx={{
-            mt: 1,
-            mb: 3,
-            p: 1,
-            display: "flex",
-            gap: 1,
-            flexDirection: "row",
-          }}
+    <Grid spacing={2} sx={{ p: 3, }}>
+      <Box
+            component="div"
+            noValidate
+            sx={{
+              mt: 1,
+              mb: 3,
+              p: 1,
+              gap: 1,
+            }}
         >
-          <TextField
-            name="name"
-            required
-            fullWidth
-            id="name"
-            label="Name"
-            autoFocus
-            {...register("name")}
-          />
-          <TextField
-            name="email"
-            required
-            fullWidth
-            id="email"
-            label="Email"
-            autoFocus
-            {...register("email")}
-          />
-          <TextField
-            name="password"
-            required
-            fullWidth
-            id="password"
-            label="Password"
-            autoFocus
-            {...register("password")}
-          />
-          <TextField
-            name="Phone"
-            required
-            fullWidth
-            id="phone"
-            label="Phone"
-            autoFocus
-            {...register("phone")}
-          />
-          <TextField
-            fullWidth
-            id="image"
-            type="file"
-            name="image"
-            placeholder="Profile Image"
-            {...register("image")}
-          />
-          <Button
-            type="submit"
-            size="small"
-            variant="contained"
-            sx={{ mt: 1, mb: 1 }}
-          >
-            Add
-          </Button>
-        </Box>
-      </form>
+      <form onSubmit={handleSubmit(onSubmit)}>
+          <Grid container spacing={2} sx={{p:0}}>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                  name="name"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  autoFocus
+                  {...register("name")}
+              />
+            </Grid>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                  name="email"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email"
+                  autoFocus
+                  {...register("email")}
+              />
+            </Grid>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                  name="password"
+                  required
+                  fullWidth
+                  id="password"
+                  label="Password"
+                  autoFocus
+                  {...register("password")}
+              />
+            </Grid>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                  name="Phone"
+                  required
+                  fullWidth
+                  id="phone"
+                  label="Phone"
+                  autoFocus
+                  {...register("phone")}
+              />
+            </Grid>
+            <Grid item xs={12} md={2} lg={3}>
+              <TextField
+                  fullWidth
+                  id="image"
+                  type="file"
+                  name="image"
+                  placeholder="Profile Image"
+                  {...register("image")}
+              />
+            </Grid>
+            <Grid item xs={12} md={2} lg={1}>
+              <Button
+                  type="submit"
+                  size="small"
+                  variant="contained"
+                  sx={{ mt: 1, mb: 1 }}
+              >
+                Add
+              </Button>
+            </Grid>
+          </Grid>
 
-      {/* Reusable Filter Option */}
+      </form>
+      </Box>
+
       <FilterMenu
         searchType={searchType}
         options={["Email", "Phone"]}
@@ -168,7 +180,7 @@ export default function AllUsers() {
         item="User"
       />
 
-      {/* Reusable Table  */}
+      {/* Reusable Filter Option */}
       <CommonTable
         columns={columns}
         data={data}
@@ -179,6 +191,7 @@ export default function AllUsers() {
         handleChangeRowsPerPage={handleChangeRowsPerPage}
         roleCreate = {true}
       />
-    </Box>
+      {/* Reusable Table  */}
+    </Grid>
   );
 }

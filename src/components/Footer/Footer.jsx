@@ -27,13 +27,13 @@ const Footer = () => {
       <Grid items xs={12} sm={12} md={12} lg={12}>
         <Grid
           container
-          spacing={{ xs: 2, md: 0 }}
+          spacing={{ xs: 4, md: 0 }}
           style={style}
-          sx={{ display: "flex", p: 4, justifyContent: "center", gap: 0 }}
+          sx={{ display: "flex", p: 4, justifyContent: "center", gap : {xs : 4, md :0} }}
         >
           <Grid
             items
-            xs={6}
+            xs={12}
             md={3}
             lg={3}
             sx={{
@@ -60,7 +60,7 @@ const Footer = () => {
 
           <Grid
             items
-            xs={6}
+            xs={12}
             md={3}
             lg={3}
             sx={{
@@ -114,16 +114,17 @@ const Footer = () => {
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-around",
+              // justifyContent: "space-around",
+
               // alignItems: "center",
             }}
           >
-            <Box>
-              <Typography variant="body1" color="white">
+            <Box sx ={{pb: 3}}>
+              <Typography sx={{textAlign :"left"}} variant="body1" color="white">
                 My Account
               </Typography>
             </Box>
-            &nbsp;
+
             <Box
               sx={{
                 display: "flex",
@@ -152,7 +153,7 @@ const Footer = () => {
 
           <Grid
             items
-            xs={8}
+            xs={12}
             md={4}
             lg={4}
             sx={{

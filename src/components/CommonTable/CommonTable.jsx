@@ -22,17 +22,18 @@ const CommonTable = ({
 }) => {
   
   // Delete the data from the table
-  const handleDelete = (id) => {
-    setData((previousData) => {
-      return previousData.filter((item) => item.id !== id);
-    });
+  const handleDelete = (rowData) => {
+    rowData.id ?
+        setData((previousData) => { return previousData.filter((item) => item.id !== rowData.id)})
+          :
+          setData((previousData) => { return previousData.filter((item) => item.email !== rowData.email)});
   };
-  
+
   const [open, setOpen] = useState(false);
   const [singleData, setSingleData] = useState({});
 
 
-  // used for openning the edit modal
+  // used for opening the edit modal
   function handleOpen() {
     setOpen(true);
   }
@@ -52,20 +53,20 @@ const CommonTable = ({
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead>
+          <TableHead >
             <TableRow>
               {columns.map((column) => (
                 <>
                   <TableCell
                     key={column.id}
                     align={column.align}
-                    style={{ minWidth: column.minWidth }}
+                    style={{ minWidth: column.minWidth, fontWeight : "bold", backgroundColor : "#f5f5f5" }}
                   >
                     {column.label}
                   </TableCell>
                 </>
               ))}
-              <TableCell>Action</TableCell>
+              <TableCell style ={{ fontWeight : "bold", backgroundColor : "#f5f5f5"}}>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -73,7 +74,7 @@ const CommonTable = ({
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow  hover role="checkbox" tabIndex={-1} key={row.code} >
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
@@ -87,7 +88,7 @@ const CommonTable = ({
                     })}
 
                     <TableCell>
-                      <DeleteIcon onClick={() => handleDelete(row.id)} />
+                      <DeleteIcon onClick={() => handleDelete(row)} />
                       <EditIcon onClick={()=>handleEdit(row)} />
                     </TableCell>
                   </TableRow>

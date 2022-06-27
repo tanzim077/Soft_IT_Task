@@ -1,5 +1,5 @@
 import {
-  FormControl,
+  FormControl, Grid,
   InputLabel,
   MenuItem,
   Select,
@@ -16,8 +16,16 @@ const FilterMenu = ({
   item
 }) => {
   return (
-    <Box sx = {{ display: "flex", gap : 3, alignItems: "center"}}>
-      <Typography   variant="h6" color = "green" gutterBottom> Search for a specific {item} </Typography>
+    <Box sx = {{ display: "flex", gap : 3, pb:2, alignItems: "center"}}>
+      <Grid container>
+
+      <Grid item xs={12} md={4} lg={4} sx={{display : "flex", alignItems : "center"}}>
+      <Typography variant="h6" color = "green" gutterBottom > Search for a specific {item} </Typography>
+
+      </Grid>
+      <Grid item xs={12} md={4} lg={4}>
+
+      </Grid>
       <FormControl >
         <InputLabel id="demo-simple-select-label">Filter</InputLabel>
         <Box sx={{ display: "flex", gap :3 }}>
@@ -45,6 +53,9 @@ const FilterMenu = ({
           />
         </Box>
       </FormControl>
+
+      </Grid>
+
     </Box>
   );
 };

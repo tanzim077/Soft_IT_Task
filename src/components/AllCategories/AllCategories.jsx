@@ -67,7 +67,6 @@ const AllCategories = () => {
     setPage(newPage);
   };
 
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);

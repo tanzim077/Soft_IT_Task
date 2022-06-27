@@ -8,7 +8,7 @@
 - In the same table is dynamically used for both product and category list
 - There are a role can be added with users while updating any user
 - In product table a select option is implemented for getting one or more categories with a product for ensuring the one to many relationship
-- The application is responsive
+- The application is responsive for all devices
 
 ## Usage
 
