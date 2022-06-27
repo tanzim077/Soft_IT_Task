@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Box,
   Button,
@@ -10,25 +9,30 @@ import {
 import { useForm } from "react-hook-form";
 
 const LogInForm = () => {
-          const {
-            register,
-            handleSubmit,
-            watch,
-            formState: { errors },
-          } = useForm();
-    return (
-      <Box
-        sx={{
-          py: 2,
-          width: "90%",
-          display: "flex",
-          flexDirection: "column",
-          gap: 3,
-        }}
-      >
-        <Typography variant="h6" color="black">
-          Login Your Account
-        </Typography>
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+    <Box
+      sx={{
+        py: 2,
+        width: "90%",
+        display: "flex",
+        flexDirection: "column",
+        gap: 3,
+      }}
+    >
+      <Typography variant="h6" color="black">
+        Login Your Account
+      </Typography>
         <Grid item xs={12}>
           <TextField
             required
@@ -74,8 +78,9 @@ const LogInForm = () => {
             Login
           </Button>
         </Box>
-      </Box>
-    );
+    </Box>
+      </form>
+  );
 };
 
 export default LogInForm;

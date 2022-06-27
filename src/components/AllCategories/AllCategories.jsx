@@ -1,12 +1,10 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Grid, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import categoryRows from "../../fakeData/category";
 import CommonTable from "../CommonTable/CommonTable";
 import FilterMenu from "../FilterMenu/FilterMenu";
 
-function createData(id, name, description) {
-  return { id, name, description };
-}
 
 const columns = [
   { id: "id", label: "ID", minWidth: 170 },
@@ -14,25 +12,8 @@ const columns = [
   { id: "description", label: "Description", minWidth: 100 },
 ];
 
-const categoryRows = [
-  createData("1", "Dummy Category 1", "Short description"),
-  createData("2", "Dummy Category 2", "Short description"),
-  createData("3", "Dummy Category 3", "Short description"),
-  createData("4 ","Dummy Category 4", "Short description"),
-  createData("5", "Dummy Category 5", "Short description"),
-  createData("6", "Dummy Category 6", "Short description"),
-  createData("7", "Dummy Category 7", "Short description"),
-  createData("8", "Dummy Category 8", "Short description"),
-  createData("9", "Dummy Category 9", "Short description"),
-  createData("11", "Dummy Categor 10", "Short description"),
-  createData("2", "Dummy Category 11", "Short description"),
-  createData("13 ","Dummy Categor 12", "Short description"),
-  createData("14", "Dummy Categor 13", "Short description"),
-  createData("15", "Dummy Categor 14", "Short description"),
-  createData("16", "Dummy Categor 15", "Short description"),
-];
-
 const AllCategories = () => {
+
   const [data, setData] = useState(categoryRows);
   const [searchType, setSearchType] = useState("name");
   const [page, setPage] = useState(0);
@@ -42,15 +23,14 @@ const AllCategories = () => {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (newData) => {
     setData([...data, newData]);
+    console.log(data); // just checking is the data is updated
     reset();
-    // console.log(data); // just checking is the data is updated
   };
 
   // change the search type here
@@ -63,6 +43,7 @@ const AllCategories = () => {
     setSearchValue(e.target.value);
   };
 
+  // For pagination
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -84,58 +65,65 @@ const AllCategories = () => {
   }, [searchValue]);
 
   return (
-    <Box sx={{ p: 3 }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Box
-          component="div"
-          noValidate
-          sx={{
-            mt: 1,
-            mb: 3,
-            p: 1,
-            display: "flex",
-            gap: 1,
-            flexDirection: "row",
-          }}
-        >
-          <TextField
-            name="id"
-            required
-            fullWidth
-            id="id"
-            label="ID"
-            autoFocus
-            {...register("id")}
-          />
-          <TextField
-            name="name"
-            required
-            fullWidth
-            id="name"
-            label="Name"
-            autoFocus
-            {...register("name")}
-          />
-          <TextField
-            name="description"
-            required
-            fullWidth
-            id="description"
-            label="Description"
-            autoFocus
-            {...register("description")}
-          />
-
-          <Button
-            type="submit"
-            size="small"
-            variant="contained"
-            sx={{ mt: 1, mb: 1 }}
-          >
-            Add
-          </Button>
-        </Box>
-      </form>
+    <Grid spacing={2} sx={{ p: 3 }}>
+      <Box
+        component="div"
+        noValidate
+        sx={{
+          mt: 1,
+          mb: 3,
+          p: 1,
+          gap: 1,
+        }}
+      >
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Grid container spacing={2} sx={{ p: 0, display: "flex" }}>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                name="id"
+                required
+                fullWidth
+                id="id"
+                label="ID"
+                autoFocus
+                {...register("id")}
+              />
+            </Grid>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                name="name"
+                required
+                fullWidth
+                id="name"
+                label="Name"
+                autoFocus
+                {...register("name")}
+              />
+            </Grid>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                name="description"
+                required
+                fullWidth
+                id="description"
+                label="Description"
+                autoFocus
+                {...register("description")}
+              />
+            </Grid>
+            <Grid item xs={12} md={2} lg={2}>
+              <Button
+                type="submit"
+                size="small"
+                variant="contained"
+                sx={{ mt: 1, mb: 1 }}
+              >
+                Add
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </Box>
 
       {/* Reusable Filter Option */}
       <FilterMenu
@@ -143,7 +131,7 @@ const AllCategories = () => {
         options={["Name"]}
         handleChange={handleChange}
         handleSearchData={handleSearchData}
-        item = "Category"
+        item="Category"
       />
 
       {/* Reusable Table  */}
@@ -156,7 +144,7 @@ const AllCategories = () => {
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={handleChangeRowsPerPage}
       />
-    </Box>
+    </Grid>
   );
 };
 

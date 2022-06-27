@@ -7,8 +7,7 @@ import Banner from "../Banner/Banner";
 const Home = () => {
   return (
     <>
-      <Banner />
-    
+      <Banner />    
       <Grid
         container
         sx={{ display: "flex", justifyContent: "center", px: "4%" }}
@@ -20,7 +19,6 @@ const Home = () => {
           <RegisterForm />
         </Grid>
       </Grid>
-      {/* </Box> */}
       <AdBanner />
     </>
   );

@@ -1,18 +1,23 @@
 import LocalMallIcon from "@mui/icons-material/LocalMall";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import { Menu, MenuItem } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import logo from "../../assets/images/logo.png";
 const NavBar = () => {
   const paths = ["Home", "About", "Shop", "Contact"];
-  const pages = ["Login", "Register", "Create Product", "Create Category", "All Users", "All Products", "All Categories"];
+  const pages = [
+    "Login",
+    "Register",
+    "Create Product",
+    "Create Category",
+    "All Users",
+    "All Products",
+    "All Categories",
+  ];
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -32,7 +37,7 @@ const NavBar = () => {
         navigate("/login");
         break;
       case "Register":
-        navigate("/register"); 
+        navigate("/register");
         break;
       case "Create Product":
         navigate("/product");
@@ -55,8 +60,8 @@ const NavBar = () => {
       default:
         break;
     }
-        handleCloseUserMenu();
-  }
+    handleCloseUserMenu();
+  };
 
   return (
     <Box sx={{ flexGrow: 1, boxShadow: "none" }}>
@@ -64,18 +69,17 @@ const NavBar = () => {
         sx={{ backgroundColor: "#fff", color: "#000", boxShadow: "none" }}
         position="static"
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: "space-around",
+          }}
+        >
           <Box>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
+            <img src={logo} alt="logo" width="50px" height="50px" />
           </Box>
+
           <Box sx={{ display: "flex", gap: 1 }}>
             {paths.map((path) => (
               <Typography
@@ -124,11 +128,9 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <Box sx={{ border: 1, borderRadius: "50%", px: "1px" }}>
-              <SearchIcon />
-            </Box>
-            <LocalMallIcon />
+
+          <Box sx={{ display: "flex" }}>
+            <LocalMallIcon sx={{ color: "red" }} />
           </Box>
         </Toolbar>
       </AppBar>

@@ -1,8 +1,8 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import categoryRows from "../../fakeData/category";
 import MultipleSelect from "../MultipleSelect/MultipleSelect";
-
 
 const AddProductContainer = styled.div`
     display: flex;
@@ -10,46 +10,26 @@ const AddProductContainer = styled.div`
     margin : 10%
     height: 100%;
     justify-content: center;
-    `
-
-function createData(id, categoryId, name, description) {
-  return { id, categoryId, name, description };
-}
-const categoryRows = [
-  createData("1", "Dummy Category 1", "Short description"),
-  createData("2", "Dummy Category 2", "Short description"),
-  createData("3", "Dummy Category 3", "Short description"),
-  createData("4 ", "Dummy Category 4", "Short description"),
-  createData("5", "Dummy Category 5", "Short description"),
-  createData("6", "Dummy Category 6", "Short description"),
-  createData("7", "Dummy Category 7", "Short description"),
-  createData("8", "Dummy Category 8", "Short description"),
-  createData("9", "Dummy Category 9", "Short description"),
-  createData("11", "Dummy Category 10", "Short description"),
-  createData("2", "Dummy Category 11", "Short description"),
-  createData("13 ", "Dummy Category 12", "Short description"),
-  createData("14", "Dummy Category 13", "Short description"),
-  createData("15", "Dummy Category 14", "Short description"),
-  createData("16", "Dummy Category 15", "Short description"),
-];
+    `;
 
 const allCategory = categoryRows.map((row) => {
-  return row.categoryId;
+  return row.id;
 });
 
 const Product = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-    } = useForm();
-    
+  } = useForm();
+
   const onSubmit = (data) => console.log(data);
   return (
     <AddProductContainer>
-          <Container component="main" maxWidth="xs">
-              <Typography sx={{textAlign : "center"}} component="h3" variant="h5"> Add a Product </Typography>
+      <Container component="main" maxWidth="xs">
+        <Typography sx={{ textAlign: "center" }} component="h3" variant="h5">
+          Add a Product
+        </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box
             component="div"

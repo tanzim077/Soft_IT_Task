@@ -8,8 +8,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import EditModal from "../EditModal/EditModal";
 import { useState } from "react";
+import EditModal from "../EditModal/EditModal";
 
 const CommonTable = ({
   columns,
@@ -20,18 +20,19 @@ const CommonTable = ({
   handleChangePage,
   handleChangeRowsPerPage,
 }) => {
-  
   // Delete the data from the table
   const handleDelete = (rowData) => {
-    rowData.id ?
-        setData((previousData) => { return previousData.filter((item) => item.id !== rowData.id)})
-          :
-          setData((previousData) => { return previousData.filter((item) => item.email !== rowData.email)});
+    rowData.id
+      ? setData((previousData) => {
+          return previousData.filter((item) => item.id !== rowData.id);
+        })
+      : setData((previousData) => {
+          return previousData.filter((item) => item.email !== rowData.email);
+        });
   };
 
   const [open, setOpen] = useState(false);
   const [singleData, setSingleData] = useState({});
-
 
   // used for opening the edit modal
   function handleOpen() {
@@ -53,20 +54,28 @@ const CommonTable = ({
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead >
+          <TableHead>
             <TableRow>
               {columns.map((column) => (
                 <>
                   <TableCell
                     key={column.id}
                     align={column.align}
-                    style={{ minWidth: column.minWidth, fontWeight : "bold", backgroundColor : "#f5f5f5" }}
+                    style={{
+                      minWidth: column.minWidth,
+                      fontWeight: "bold",
+                      backgroundColor: "#f5f5f5",
+                    }}
                   >
                     {column.label}
                   </TableCell>
                 </>
               ))}
-              <TableCell style ={{ fontWeight : "bold", backgroundColor : "#f5f5f5"}}>Action</TableCell>
+              <TableCell
+                style={{ fontWeight: "bold", backgroundColor: "#f5f5f5" }}
+              >
+                Action
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -74,11 +83,18 @@ const CommonTable = ({
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow  hover role="checkbox" tabIndex={-1} key={row.code} >
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {
                       const value = row[column.id];
-                      return (
-
+                      return column.id === "image" ? (
+                        <TableCell key={column.id} align={column.align}>
+                          <img
+                            src={value}
+                            alt="image"
+                            style={{ width: "50px", height: "50px" }}
+                          />
+                        </TableCell>
+                      ) : (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === "number"
                             ? column.format(value)
@@ -89,7 +105,7 @@ const CommonTable = ({
 
                     <TableCell>
                       <DeleteIcon onClick={() => handleDelete(row)} />
-                      <EditIcon onClick={()=>handleEdit(row)} />
+                      <EditIcon onClick={() => handleEdit(row)} />
                     </TableCell>
                   </TableRow>
                 );
@@ -106,7 +122,12 @@ const CommonTable = ({
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      <EditModal open={open} handleClose={handleClose} setData={setData} data={singleData} />
+      <EditModal
+        open={open}
+        handleClose={handleClose}
+        setData={setData}
+        data={singleData}
+      />
     </Paper>
   );
 };

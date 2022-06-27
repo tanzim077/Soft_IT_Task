@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Box,
   Button,
@@ -10,19 +9,21 @@ import {
 import { useForm } from "react-hook-form";
 
 const RegisterForm = () => {
-      const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm();
-    
-    return (
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         sx={{
           padding: 3,
-        //   px: "40px",
-          width: "90%",    
+          width: "90%",
           display: "flex",
           flexDirection: "column",
           gap: 3,
@@ -104,7 +105,8 @@ const RegisterForm = () => {
           </Button>
         </Box>
       </Box>
-    );
+    </form>
+  );
 };
 
 export default RegisterForm;

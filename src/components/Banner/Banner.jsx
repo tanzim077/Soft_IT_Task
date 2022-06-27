@@ -1,7 +1,7 @@
-import { Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import styled from "styled-components";
-
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 const BannerContainer = styled.div`
   display: flex;
   align-items: center;
@@ -25,11 +25,15 @@ const Banner = () => {
           My Account
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
           <Typography variant="h5" color="white">
-            Home >> 
+          Home
           </Typography>
+            <DoubleArrowIcon sx={{color : "white"}} />
+          </Box>
+
           <Typography variant="h5" color="red">
-             My Account
+            My Account
           </Typography>
         </Box>
       </Box>

@@ -1,17 +1,25 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
+import styled from "styled-components";
+
+const AddCategoryContainer = styled.div`
+    display: flex;
+    padding :3% 10%;
+    margin : 10%
+    height: 100%;
+    justify-content: center;
+    `;
 
 const Category = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
 
   return (
-    <div>
+    <AddCategoryContainer>
       <Container component="main" maxWidth="xs">
         <Typography sx={{ textAlign: "center" }} component="h3" variant="h5">
           Add a Category
@@ -61,7 +69,7 @@ const Category = () => {
           </Box>
         </form>
       </Container>
-    </div>
+    </AddCategoryContainer>
   );
 };
 

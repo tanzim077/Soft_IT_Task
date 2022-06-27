@@ -1,17 +1,15 @@
-// import { FormControl } from "@mui/material";
-import React, { useState } from "react";
-import {Checkbox} from "@mui/material";
-import {InputLabel} from "@mui/material";
-import {ListItemIcon} from "@mui/material";
-import {ListItemText} from "@mui/material";
-import {MenuItem} from "@mui/material";
-import {FormControl} from "@mui/material";
-import {Select} from "@mui/material";
-import { MenuProps } from "../../utils/utitis";
+import {
+  Checkbox,
+  FormControl,
+  InputLabel,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  Select
+} from "@mui/material";
 import { Box } from "@mui/system";
-
-
-
+import { useState } from "react";
+import { MenuProps } from "../../utils/utitis";
 
 const MultipleSelect = ({ options, width, setCategoryList }) => {
   const [selected, setSelected] = useState([]);
@@ -29,7 +27,7 @@ const MultipleSelect = ({ options, width, setCategoryList }) => {
     setCategoryList(value);
   };
   return (
-    <Box sx={{ width: width || "50%" }}>
+    <Box sx={{ width: width || "100%" }}>
       <FormControl sx={{ maxWidth: "100%" }} fullWidth>
         <InputLabel id="mutiple-select-label">Category ID</InputLabel>
         <Select

@@ -4,7 +4,7 @@ import AllCategories from "./components/AllCategories/AllCategories";
 import AllProducts from "./components/AllProducts/AllProducts";
 import AllUsers from "./components/AllUsers/AllUsers";
 import LogIn from "./components/Auth/LogIn/LogIn";
-import Register from "./components/Auth/Register/register";
+import Register from "./components/Auth/Register/Register";
 import Category from "./components/Category/Category";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";

@@ -17,7 +17,6 @@ const EditModal = ({ open, handleClose, setData, data }) => {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
@@ -36,7 +35,6 @@ const EditModal = ({ open, handleClose, setData, data }) => {
     reset();
     handleClose();
   };
-  console.log(data)
   return (
     <div>
       <Modal

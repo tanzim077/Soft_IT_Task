@@ -218,7 +218,7 @@ const Footer = () => {
       </Grid>
 
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Box
+        <Grid container
           sx={{
             backgroundColor: "#555",
             display: "flex",
@@ -226,8 +226,7 @@ const Footer = () => {
             py: "10px",
           }}
         >
-          <Box
-            sx={{ textAlign: "center", display: "flex", alignItems: "center" }}
+          <Grid items sx={{ textAlign: "center", display: "flex", alignItems: "center" }}
           >
             <Typography variant="body1" color="white">
               Copyright © 2020 All rights reserved by
@@ -236,8 +235,9 @@ const Footer = () => {
             <Typography variant="body1" color="red">
               E-Buy
             </Typography>
-          </Box>
-          <Box sx={{ display: "flex", gap: 2, textAlign: "center" }}>
+          </Grid>
+
+          <Grid items sx={{ display: "flex", gap: 2, textAlign: "center" }}>
             <img
               style={{ height: "35px", width: "35px" }}
               src={americanExpress}
@@ -263,8 +263,8 @@ const Footer = () => {
               src={applePay}
               alt=""
             />
-          </Box>
-        </Box>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );

@@ -1,31 +1,11 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Grid, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import categoryRows from "../../fakeData/category";
+import rows from "../../fakeData/product";
 import CommonTable from "../CommonTable/CommonTable";
 import FilterMenu from "../FilterMenu/FilterMenu";
 import MultipleSelect from "../MultipleSelect/MultipleSelect";
-
-function createData(id, categoryid, name, description) {
-  return { id, categoryid, name, description };
-}
-
-const categoryRows = [
-  createData("1", "Dummy Category 1", "Short description"),
-  createData("2", "Dummy Category 2", "Short description"),
-  createData("3", "Dummy Category 3", "Short description"),
-  createData("4 ", "Dummy Category 4", "Short description"),
-  createData("5", "Dummy Category 5", "Short description"),
-  createData("6", "Dummy Category 6", "Short description"),
-  createData("7", "Dummy Category 7", "Short description"),
-  createData("8", "Dummy Category 8", "Short description"),
-  createData("9", "Dummy Category 9", "Short description"),
-  createData("11", "Dummy Category 10", "Short description"),
-  createData("2", "Dummy Category 11", "Short description"),
-  createData("13 ", "Dummy Category 12", "Short description"),
-  createData("14", "Dummy Category 13", "Short description"),
-  createData("15", "Dummy Category 14", "Short description"),
-  createData("16", "Dummy Category 15", "Short description"),
-];
 
 const columns = [
   { id: "id", label: "ID", minWidth: 170 },
@@ -33,31 +13,11 @@ const columns = [
   { id: "name", label: "Name", minWidth: 100 },
   { id: "description", label: "Description", minWidth: 100 },
 ];
-
-const allCategory = categoryRows.map((row) => {
-  return row.categoryid;
+const allCategories = categoryRows.map((row) => {
+  return row.id;
 });
 
-// Some dummy data for the table
-const rows = [
-  createData("1", [45], "Dummy Product", "Short descripton"),
-  createData("2", [38], "Dummy Product", "Short descripton"),
-  createData("3", [37], "Dummy Product", "Short descripton"),
-  createData("4 ", [36], "Dummy Product", "Short descripton"),
-  createData("5", [35], "Dummy Product", "Short descripton"),
-  createData("6", [34], "Dummy Product", "Short descripton"),
-  createData("7", [33,32], "Dummy Product", "Short descripton"),
-  createData("8", [29], "Dummy Product", "Short descripton"),
-  createData("9", [28], "Dummy Product", "Short descripton"),
-  createData("10", [27], "Dummy Product", "Short descripton"),
-  createData("11", [26], "Dummy Product", "Short descripton"),
-  createData("12 ", [25], "Dummy Product", "Short descripton"),
-  createData("13", [24], "Dummy Product", "Short descripton"),
-  createData("14", [23], "Dummy Product", "Short descripton"),
-  createData("15", [22], "Dummy Product", "Short descripton"),
-  createData("16", [21], "Dummy Product", "Short descripton"),
-  createData("17", [20], "Dummy Product", "Short descripton"),
-];
+const allCategory = [...new Set(allCategories)];
 
 const AllProducts = () => {
   const [data, setData] = useState(rows);
@@ -70,17 +30,15 @@ const AllProducts = () => {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (newData) => {
     newData.categoryid = categoryList;
-    console.log(newData)
     setData([...data, newData]);
     reset();
-    // console.log(data); // just checking is the data is updated
+    console.log(data);
   };
 
   // change the search type here
@@ -114,66 +72,77 @@ const AllProducts = () => {
   }, [searchValue]);
 
   return (
-    <Box sx={{ p: 3 }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Box
-          component="div"
-          noValidate
-          sx={{
-            mt: 1,
-            mb: 3,
-            p: 1,
-            display: "flex",
-            gap: 1,
-            flexDirection: "row",
-          }}
-        >
-          <TextField
-            name="id"
-            required
-            fullWidth
-            id="id"
-            label="ID"
-            autoFocus
-            {...register("id")}
-          />
+    <Grid spacing={2} sx={{ p: 3 }}>
+      <Box
+        component="div"
+        noValidate
+        sx={{
+          mt: 1,
+          mb: 3,
+          p: 1,
+          gap: 1,
+        }}
+      >
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Grid container spacing={2} sx={{ p: 0, display: "flex" }}>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                name="id"
+                required
+                fullWidth
+                id="id"
+                label="ID"
+                autoFocus
+                {...register("id")}
+              />
+            </Grid>
+            <Grid item xs={12} md={3} lg={3}>
+              {/* For dynamically set the category from the created category list*/}
+              <MultipleSelect
+                options={allCategory}
+                setCategoryList={setCategoryList}
+              />
+            </Grid>
 
-          <MultipleSelect
-            options={allCategory}
-            setCategoryList={setCategoryList}
-          />
-      
-          <TextField
-            name="name"
-            required
-            fullWidth
-            id="name"
-            label="Name"
-            autoFocus
-            {...register("name")}
-          />
-          <TextField
-            name="description"
-            required
-            fullWidth
-            id="description"
-            label="Description"
-            autoFocus
-            {...register("description")}
-          />
+            <Grid item xs={12} md={3} lg={3}>
+              <TextField
+                name="name"
+                required
+                fullWidth
+                id="name"
+                label="Name"
+                autoFocus
+                {...register("name")}
+              />
+            </Grid>
 
-          <Button
-            type="submit"
-            size="small"
-            variant="contained"
-            sx={{ mt: 1, mb: 1 }}
-          >
-            Add
-          </Button>
-        </Box>
-      </form>
+            <Grid item xs={12} md={2} lg={2}>
+              <TextField
+                name="description"
+                required
+                fullWidth
+                id="description"
+                label="Description"
+                autoFocus
+                {...register("description")}
+              />
+            </Grid>
 
-      {/* Reusable Filter Option */}
+            <Grid item xs={12} md={2} lg={2}>
+              <Button
+                type="submit"
+                size="small"
+                variant="contained"
+                sx={{ mt: 1, mb: 1 }}
+              >
+                Add
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </Box>
+
+      {/* Reusable Filter Option , options is given from here so user can change the filter type anytime*/}
       <FilterMenu
         searchType={searchType}
         options={["Name", "CategoryId"]}
@@ -192,7 +161,7 @@ const AllProducts = () => {
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={handleChangeRowsPerPage}
       />
-    </Box>
+    </Grid>
   );
 };
 
